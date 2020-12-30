@@ -193,13 +193,13 @@ def main():
 
         print("Here is a preview of the data....")
         print(df.head())
-        time.sleep(3)
+        time.sleep(0.5)
         time_stats(df)
-        time.sleep(3) # pasu 3 seconds
+        time.sleep(0.5) # pasu 3 seconds
         station_stats(df)
-        time.sleep(3)
+        time.sleep(0.5)
         trip_duration_stats(df)
-        time.sleep(3)
+        time.sleep(0.5)
         user_stats(df)
 
         restart = input('\nWould you like to continue? Enter yes or no.\n')
