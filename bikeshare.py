@@ -22,22 +22,22 @@ def get_filters():
     while city not in valid_cities:
         city=input('Would you like to see data for Chicago, New York or Washington?\n').lower().strip()
         if city not in valid_cities:
-            print("Sorry, please enter one of the following city names:Chicago, New York, or Washington")
+            print("Sorry, please enter one of the following city names: Chicago, New York, or Washington")
 
     # get user input for month (all, january, february, ... , june)
     month=''
     valid_months = ['all','janurary', 'february', 'march','april','may','june']
-    
-    while month not in valid_months : 
-        month = input('Which month? Enter one of the following:janurary, feburary, march, april, may or june.\n')
+
+    while month not in valid_months :
+        month = input('Which month? Enter one of the following:Janurary, Feburary, March, April, May or June.\n')
         month = month.lower().strip()
         if month not in valid_months:
-            print("Sorry. Please enter one of the following:janurary, feburary, march, april, may or june.\n")
+            print("Sorry. Please enter one of the following:Janurary, Feburary, March, April, May or June.\n")
     # get user input for day of week (all, monday, tuesday, ... sunday)
     day =''
     valid_days=['all','monday','tuesday','wednesday','thursday','friday','saturday','sunday']
-    
-    while day not in valid_days : 
+
+    while day not in valid_days :
         day = input("Which day - Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday? Type All for all days\n")
         day = day.lower().strip()
         if day not in valid_days:
@@ -82,9 +82,9 @@ def load_data(city, month, day):
     # filter by day of week if applicable
     if day != 'all':
         # filter by day of week to create the new dataframe
-        df = df[df['day'] == day.title()] #change input day to title case 
+        df = df[df['day'] == day.title()] #change input day to title case
 
-    # calculate hour 
+    # calculate hour
     df['hour']=df['Start Time'].dt.hour
     return df
 #---------------------------------end of load_data-----------------------------
@@ -162,25 +162,25 @@ def user_stats(df):
     print("Counts of User Types are: ")
     print(user_types)
     print('-'*40)
-    
+
     # Display counts of gender
     if 'Gender' not in df.columns:
         print("No gender information available")
-    else: 
+    else:
         gender = df['Gender'].value_counts()
         print("Counts of Gender are: \n")
         print(gender)
     print('-'*40)
-   
+
     # Display earliest, most recent, and most common year of birth
     if 'Birth Year' not in df.columns:
         print("No birthday year available")
-    
+
     else:
         print("The earliest birth year is {}".format(df['Birth Year'].min()))
         print("The most recent birth year is {}".format(df['Birth Year'].max()))
         print("The most common birth year is {}".format(df['Birth Year'].mode()))
-    
+
         print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -189,29 +189,22 @@ def main():
     while True:
         city, month, day = get_filters()
         df = load_data(city, month, day)
-        
-        moreYN=''
-        rawYN=''
-        printed_lines=0
-        
-        rawYN = input("Do you want to see the raw data? Type Yes or No \n")
-        if rawYN.lower().strip() =='yes' or 'y':
-            print(df.head())
-            printed_lines=5
-            
-            while moreYN.lower().strip()!='no':
-                moreYN=input("More lines?")
-                print(df.iloc[printed_lines:(printed_lines+5)])
-                printed_lines = printed_lines +5 
-           
 
+
+        print("Here is a preview of the data....")
+        print(df.head())
+        time.sleep(3)
         time_stats(df)
+        time.sleep(3) # pasu 3 seconds
         station_stats(df)
+        time.sleep(3)
         trip_duration_stats(df)
+        time.sleep(3)
         user_stats(df)
 
-        restart = input('\nWould you like to restart? Enter yes or no.\n')
+        restart = input('\nWould you like to continue? Enter yes or no.\n')
         if restart.lower() != 'yes':
+            print("Bye now:)")
             break
 if __name__ == "__main__":
 	main()
