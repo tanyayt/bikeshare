@@ -12,8 +12,8 @@ This project investigates bikeshare data in Chicago, New York City and Washingto
 
 ## Python codes: 
 
-*   bikeshare_final.py 
+*   bikeshare.py 
 ## Demo
-Run bikeshare_final.py in PowerShell 
+Run bikeshare.py in PowerShell 
 
-<img src="https://github.com/tanyayt/bikeshare/blob/main/demo.gif?raw=true" alt="demo" width="500" margin="5"/>
+<img src="https://github.com/tanyayt/bikeshare/blob/main/bikeshare-demo.gif?raw=true" alt="demo" width="500" margin="5"/>
